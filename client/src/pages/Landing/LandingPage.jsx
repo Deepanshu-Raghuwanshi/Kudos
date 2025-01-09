@@ -11,10 +11,10 @@ const LandingPage = () => {
   const [kudos, setKudos] = useState([]);
 
   useEffect(() => {
-    fetchUsers();
+    fetchKudos();
   }, [currentUser]);
 
-  const fetchUsers = async () => {
+  const fetchKudos = async () => {
     try {
       const response = await axios.get(`http://localhost:3001/api/kudos`);
       setKudos(response.data.data || []);
@@ -27,6 +27,22 @@ const LandingPage = () => {
     navigate("/kudos", { state: { currentUser: currentUser } });
   };
 
+  const handleLike = async (id) => {
+    try {
+      console.log(id, "iiiiiiii");
+      // Send a POST request to toggle the like status
+      const response = await axios.patch(
+        `http://localhost:3001/api/kudo/like`,
+        {
+          id,
+        }
+      );
+
+      fetchKudos();
+    } catch (error) {
+      console.error("Error toggling like status:", error);
+    }
+  };
   return (
     <div className={style.landing_container}>
       <header className={style.header_section}>
@@ -40,7 +56,7 @@ const LandingPage = () => {
       </header>
 
       <main className={style.main_section}>
-        <KudosList kudosData={kudos} />
+        <KudosList kudosData={kudos} handleLike={handleLike} />
       </main>
 
       <footer className={style.footer_section}>

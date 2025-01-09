@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./KudoList.module.css";
-const KudosList = ({ kudosData }) => {
+
+const KudosList = ({ kudosData, handleLike }) => {
   if (!Array.isArray(kudosData)) {
     return null;
   }
@@ -22,14 +23,29 @@ const KudosList = ({ kudosData }) => {
       {kudosData.map((kudo) => (
         <div key={kudo._id} className={style.kudo_card}>
           <p className={style.kudo_text}>
-            {kudo.givenBy.name} awarded the {formatBadge(kudo.badge)} badge to{" "}
-            {kudo.givenTo.name}
+            {kudo?.givenBy?.name} awarded the {formatBadge(kudo.badge)} badge to{" "}
+            {kudo?.givenTo?.name}
           </p>
           <p className={style.kudo_message}>
             Thanks for your help with the last project
           </p>
           <div className={style.like_section}>
-            <span className={style.like_icon}>❤️</span>
+            {kudo.like ? (
+              <span
+                onClick={() => handleLike(kudo._id)} // Pass kudo ID to the handler
+                className={`${style.like_icon} ${style.liked}`}
+              >
+                ❤️
+              </span>
+            ) : (
+              <span
+                onClick={() => handleLike(kudo._id)}
+                className={style.kudo_text}
+                style={{ cursor: "pointer" }}
+              >
+                Like
+              </span>
+            )}
           </div>
         </div>
       ))}

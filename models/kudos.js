@@ -16,8 +16,12 @@ const kudosSchema = new Schema(
     },
     badge: {
       type: String,
-      enum: ["helping_hand", "excellence", "above_and_beyond", "client_focus"], // Predefined badge names
+      enum: ["helping_hand", "excellence", "above_and_beyond", "client_focus"],
       required: true,
+    },
+    like: {
+      type: Boolean,
+      default: false,
     },
   },
   { timestamps: true }

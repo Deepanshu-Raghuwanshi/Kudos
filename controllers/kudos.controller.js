@@ -100,5 +100,43 @@ const getKudos = async (req, res) => {
     });
   }
 };
+const handleKudoLike = async (req, res) => {
+  try {
+    const { id } = req.body;
 
-module.exports = { createKudos, getKudos };
+    console.log(id);
+
+    const kudo = await Kudos.findByIdAndUpdate(
+      id,
+      { like: true },
+      { new: true }
+    );
+
+    if (!kudo) {
+      return res.status(404).json({
+        code: 404,
+        message: "Kudo not found",
+        status: "failure",
+        data: {},
+      });
+    }
+
+    return res.status(200).json({
+      code: 200,
+      message: "Kudo successfully updated",
+      status: "success",
+      data: kudo,
+    });
+  } catch (error) {
+    console.error("Error updating kudo:", error.message);
+
+    return res.status(500).json({
+      code: 500,
+      message: "An error occurred while updating the kudo.",
+      status: "failure",
+      data: { error: error.message },
+    });
+  }
+};
+
+module.exports = { createKudos, getKudos, handleKudoLike };
