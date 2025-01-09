@@ -1,0 +1,89 @@
+.main_section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+
+.kudo_card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  min-height: 120px;
+}
+
+.kudo_text {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
+
+.kudo_message {
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+}
+
+.like_section {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  font-size: 24px;
+  color: #ff5252;
+}
+
+.like_icon {
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .main_section {
+    padding: 10px;
+  }
+
+  .kudo_card {
+    padding: 15px;
+    min-height: 100px;
+  }
+
+  .kudo_text {
+    font-size: 14px;
+  }
+  .kudo_message {
+    font-size: 12px;
+  }
+
+  .like_section {
+    font-size: 20px;
+    bottom: 10px;
+    right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .kudo_card {
+    padding: 10px;
+    min-height: 90px;
+  }
+
+  .kudo_text {
+    font-size: 12px;
+  }
+
+  .kudo_message {
+    font-size: 10px;
+  }
+
+  .like_section {
+    font-size: 18px;
+    bottom: 5px;
+    right: 5px;
+  }
+}
