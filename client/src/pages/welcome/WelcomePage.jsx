@@ -62,7 +62,7 @@ const WelcomePage = () => {
           onChange={(e) => setName(e.target.value)}
           className={styles.login_input}
         />
-        <button type="submit" className="login-button">
+        <button type="submit" className={styles.login_button}>
           Login
         </button>
       </form>

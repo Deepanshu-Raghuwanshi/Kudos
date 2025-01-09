@@ -52,14 +52,11 @@ const KudosPage = ({ adminName }) => {
         data,
       });
 
-      if (response.ok) {
-        alert("Kudo sent successfully!");
-        setSelectedUser("");
-        setSelectedBadge("");
-        setReason("");
-      } else {
-        alert("Failed to send kudo.");
-      }
+      alert("Kudo sent successfully!");
+      setSelectedUser("");
+      setSelectedBadge("");
+      setReason("");
+      navigate("/");
     } catch (error) {
       console.error("Error sending kudo:", error);
     }

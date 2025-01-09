@@ -30,7 +30,7 @@ const LandingPage = () => {
   return (
     <div className={style.landing_container}>
       <header className={style.header_section}>
-        <h1 className={style.welcome_message}>Welcome John!</h1>
+        <h1 className={style.welcome_message}>Welcome {currentUser}!</h1>
         <button
           onClick={HandleAnalyticNaviagte}
           className={style.give_kudo_button}

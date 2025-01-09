@@ -5,6 +5,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  background-attachment: fixed;
 }
 
 .kudos_page_container {
@@ -13,57 +14,54 @@ body {
   align-items: center;
   height: 100vh;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .kudos_form {
   width: 100%;
-  max-width: 400px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  max-width: 700px; /* Increased width for larger screen */
+  padding: 30px; /* Increased padding */
   box-sizing: border-box;
 }
 
 .kudos_form h2 {
   text-align: center;
   margin-bottom: 20px;
-  font-size: 24px;
+  font-size: 28px; /* Increased font size */
   color: #333;
 }
 
 .dropdown {
   width: 100%;
-  padding: 10px;
-  margin-bottom: 20px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 12px; /* Increased padding */
+  margin-bottom: 18px; /* Adjusted margin */
+  font-size: 18px; /* Increased font size */
+  border: 1px solid #0c0b0b;
+  height: 8vh;
+  border-radius: 8px; /* Increased border radius */
   background-color: #f9f9f9;
   box-sizing: border-box;
 }
 
 .text_area {
   width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 12px; /* Increased padding */
+  font-size: 18px; /* Increased font size */
+  border: 1px solid #090606;
+  border-radius: 8px; /* Increased border radius */
   resize: none;
-  margin-bottom: 20px;
+  margin-bottom: 18px; /* Adjusted margin */
   box-sizing: border-box;
 }
 
 .submit_button {
   width: 100%;
-  padding: 10px;
-  font-size: 18px;
+  padding: 14px; /* Increased padding */
+  font-size: 20px; /* Increased font size */
   font-weight: bold;
   color: white;
   background-color: #007bff;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px; /* Increased border radius */
   cursor: pointer;
   box-sizing: border-box;
 }
@@ -74,11 +72,38 @@ body {
 
 @media (max-width: 768px) {
   .kudos_form {
-    padding: 15px;
+    padding: 25px;
+  }
+
+  .submit_button {
+    font-size: 18px;
+    padding: 12px;
+  }
+
+  .dropdown,
+  .text_area {
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .kudos_form {
+    padding: 20px;
+  }
+
+  .kudos_form h2 {
+    font-size: 24px; /* Adjust title size for smaller screens */
   }
 
   .submit_button {
     font-size: 16px;
-    padding: 8px;
+    padding: 10px;
+  }
+
+  .dropdown,
+  .text_area {
+    font-size: 14px; /* Decreased font size on very small screens */
+    padding: 8px; /* Decreased padding for mobile */
   }
 }

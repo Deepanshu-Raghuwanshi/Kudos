@@ -4,7 +4,9 @@
   gap: 15px;
   padding: 20px;
   max-height: 100vh;
+  width: 50%; /* Increased width of the container */
   overflow-y: auto;
+  text-align: center;
 }
 
 .kudo_card {
@@ -17,6 +19,7 @@
   gap: 10px;
   position: relative;
   min-height: 120px;
+  width: 90%; /* Make card take up 100% of its parent width */
 }
 
 .kudo_text {
@@ -46,6 +49,7 @@
 @media (max-width: 768px) {
   .main_section {
     padding: 10px;
+    width: 80%; /* Adjust width for medium screens */
   }
 
   .kudo_card {
@@ -56,6 +60,7 @@
   .kudo_text {
     font-size: 14px;
   }
+
   .kudo_message {
     font-size: 12px;
   }
@@ -68,6 +73,11 @@
 }
 
 @media (max-width: 480px) {
+  .main_section {
+    padding: 5px;
+    width: 95%; /* Adjust width for smaller screens */
+  }
+
   .kudo_card {
     padding: 10px;
     min-height: 90px;

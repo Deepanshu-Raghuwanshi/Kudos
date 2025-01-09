@@ -31,8 +31,12 @@ const createKudos = async (req, res) => {
       });
     }
 
-    const byUserRecord = await userModel.findOne({ name: byUser });
-    const toUserRecord = await userModel.findOne({ name: toUser });
+    const byUserRecord = await userModel.findOne({
+      name: byUser.toLowerCase(),
+    });
+    const toUserRecord = await userModel.findOne({
+      name: toUser.toLowerCase(),
+    });
 
     if (!byUserRecord || !toUserRecord) {
       return res.status(404).json({
