@@ -19,11 +19,10 @@ const allowedOrigins = [
 app.use(
   cors({
     origin: function (origin, callback) {
+      console.log("Incoming Origin: ", origin); // Log incoming origin for debugging
       if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-        // Allow the origin if it's in the allowed list or if there's no origin (for testing)
-        callback(null, true);
+        callback(null, true); // Allow the origin
       } else {
-        // Reject the request if the origin is not allowed
         callback(new Error("CORS policy: Origin not allowed"));
       }
     },
