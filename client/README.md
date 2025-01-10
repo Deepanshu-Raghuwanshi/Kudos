@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+# welconme to kudos
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# this project is already deployed live link
 
-## Available Scripts
+https://kudos-alpha-one.vercel.app/landing
 
-In the project directory, you can run:
+# Tech stack used React , Node , MongoDb
 
-### `npm start`
+# Clone project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+https://github.com/Deepanshu-Raghuwanshi/Kudos.git
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Create env on root kudos
 
-### `npm test`
+add this to env
+PASSWORD = your mongodb cluster password
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Go to server js and change this From this URI 'kudos' before ? to you databse name
 
-### `npm run build`
+`mongodb+srv://dipanshuraghuwanshi:${DBPass}@cluster0.luqz6xt.mongodb.net/kudos?retryWrites=true&w=majority`;
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# On root folder kudos BE setup is there
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Client filder is FE
 
-### `npm run eject`
+cd client
+npm install
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# go back to root
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+cd ../
+npm start
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Currently listed users
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+ayush
+dipanshu
+vinay
 
-## Learn More
+# Schema ER details
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The Kudos application consists of three main schemas: User, Kudos, and Like. These schemas are connected to enable the functionality of giving, receiving, and liking kudos.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+User Schema: Represents a user in the system with a name field. Users can give kudos to others and like kudos posts.
 
-### Code Splitting
+Kudos Schema: Tracks the kudos given by users. It contains:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+givenBy: References the user who gave the kudos.
+givenTo: References the user who received the kudos.
+badge: Type of badge given (e.g., "helping_hand").
+reason_for_kudos: Reason for giving kudos.
+Like Schema: Tracks which users liked a kudos post. It links:
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+user: The user who liked the post.
+kudo: The kudos post that was liked.
+Relationships
+User ↔ Kudos: A user can give kudos to another user (tracked through givenBy and givenTo).
+User ↔ Like: A user can like a kudos post (tracked through user in the Like schema).
+Kudos ↔ Like: A kudos post can have multiple likes (tracked through kudo in the Like schema).
+These schemas allow users to interact by giving kudos and liking posts, with all actions being recorded and easily retrievable.
