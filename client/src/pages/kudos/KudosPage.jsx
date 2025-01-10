@@ -13,6 +13,7 @@ const KudosPage = ({ adminName }) => {
   const [selectedUser, setSelectedUser] = useState("");
   const [selectedBadge, setSelectedBadge] = useState("");
   const [reason, setReason] = useState("");
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3001";
 
   useEffect(() => {
     fetchUsers();
@@ -21,7 +22,7 @@ const KudosPage = ({ adminName }) => {
   const fetchUsers = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/api/users?user=${currentUser}`
+        `${API_URL}/api/users?user=${currentUser}`
       );
 
       setUsers(response.data.data || []);
@@ -46,7 +47,7 @@ const KudosPage = ({ adminName }) => {
     };
 
     try {
-      const response = await axios.post("http://localhost:3001/api/kudos", {
+      const response = await axios.post(`${API_URL}/api/kudos`, {
         data,
       });
 

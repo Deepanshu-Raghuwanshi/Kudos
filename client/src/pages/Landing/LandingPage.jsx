@@ -11,7 +11,7 @@ const LandingPage = () => {
   const userId = location.state?.userId || null;
   const [kudos, setKudos] = useState([]);
 
-  console.log(userId, "userId");
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3001";
 
   useEffect(() => {
     fetchKudos();
@@ -19,9 +19,7 @@ const LandingPage = () => {
 
   const fetchKudos = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:3001/api/kudos?id=${userId}`
-      );
+      const response = await axios.get(`${API_URL}/api/kudos?id=${userId}`);
       setKudos(response.data.data || []);
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -38,13 +36,10 @@ const LandingPage = () => {
 
   const handleLike = async (id) => {
     try {
-      const response = await axios.patch(
-        `http://localhost:3001/api/kudo/like`,
-        {
-          kudoId: id,
-          userId: userId,
-        }
-      );
+      const response = await axios.patch(`${API_URL}/api/kudo/like`, {
+        kudoId: id,
+        userId: userId,
+      });
 
       fetchKudos();
     } catch (error) {

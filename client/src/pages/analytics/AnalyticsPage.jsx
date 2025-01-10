@@ -32,6 +32,8 @@ const AnalyticsPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3001";
+
   const chartOptions = {
     responsive: true,
     plugins: {
@@ -49,9 +51,7 @@ const AnalyticsPage = () => {
   useEffect(() => {
     const fetchAnalyticsData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:3001/api/kudo/analytics"
-        ); // Replace with your backend API endpoint
+        const response = await axios.get(`${API_URL}/api/kudo/analytics`);
         const data = response;
 
         const formattedChartData = {

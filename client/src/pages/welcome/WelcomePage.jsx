@@ -7,6 +7,7 @@ const WelcomePage = () => {
   const [name, setName] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3001";
 
   const handleLogin = async () => {
     if (!name.trim()) {
@@ -15,7 +16,7 @@ const WelcomePage = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:3001/api/users", {
+      const response = await axios.post(`${API_URL}/api/users`, {
         name,
       });
       console.log(response.data.data.id, "response.data.data.id");
