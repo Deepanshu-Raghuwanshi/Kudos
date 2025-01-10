@@ -11,24 +11,12 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const allowedOrigins = [
-  "https://kudos-alpha-one.vercel.app",
-  "https://kudos-kwm1xg5r4-dipanshus-projects-e422a5eb.vercel.app", // Add your other frontend domain here
-];
-
 app.use(
   cors({
-    origin: function (origin, callback) {
-      console.log("Incoming Origin: ", origin); // Log incoming origin for debugging
-      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-        callback(null, true); // Allow the origin
-      } else {
-        callback(new Error("CORS policy: Origin not allowed"));
-      }
-    },
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Include OPTIONS for preflight requests
-    allowedHeaders: ["Content-Type", "Authorization"], // Allow necessary headers
-    credentials: true, // Allow credentials if needed (like cookies)
+    origin: "*", // Allows all origins
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allow these HTTP methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allow these headers
+    credentials: true, // If you need to allow cookies or authorization headers
   })
 );
 app.options("*", cors()); // Handle preflight requests for all routes
