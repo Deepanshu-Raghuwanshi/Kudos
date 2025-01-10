@@ -4,19 +4,18 @@ const {
   createKudos,
   getKudos,
   handleKudoLike,
+  getAnalyticsData,
 } = require("../controllers/kudos.controller");
 const { saveUserName, getUsers } = require("../controllers/user.controller");
-console.log(222);
-// router.get("/", getAllAdmins);
 
+// Users route
 router.post("/users", saveUserName);
 router.get("/users", getUsers);
 
-router.post("/kudos", createKudos);
+// Kudos route
 router.get("/kudos", getKudos);
-
+router.get("/kudo/analytics", getAnalyticsData);
+router.post("/kudos", createKudos);
 router.patch("/kudo/like", handleKudoLike);
-
-// router.get("/search", getAdminDataByEmail);
 
 module.exports = router;

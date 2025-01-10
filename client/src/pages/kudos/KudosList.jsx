@@ -1,22 +1,26 @@
 import React from "react";
 import style from "./KudoList.module.css";
 
-const KudosList = ({ kudosData, handleLike }) => {
-  if (!Array.isArray(kudosData)) {
-    return null;
-  }
+export const formatBadge = (badge) => {
+  return badge
+    .split("_")
+    .map((word, index) => {
+      if (index === 0) {
+        return word.charAt(0).toUpperCase() + word.slice(1);
+      }
+      return word.toLowerCase();
+    })
+    .join(" ");
+};
 
-  const formatBadge = (badge) => {
-    return badge
-      .split("_")
-      .map((word, index) => {
-        if (index === 0) {
-          return word.charAt(0).toUpperCase() + word.slice(1);
-        }
-        return word.toLowerCase();
-      })
-      .join(" ");
-  };
+const KudosList = ({ kudosData, handleLike }) => {
+  if (!Array.isArray(kudosData) || kudosData.length === 0) {
+    return (
+      <main className={style.main_section}>
+        <p className={style.kudo_text}>No kudos to show</p>
+      </main>
+    );
+  }
 
   return (
     <main className={style.main_section}>

@@ -19,7 +19,7 @@ const saveUserName = async (req, res) => {
         code: 200,
         message: "Name already exists.",
         status: "success",
-        data: {},
+        data: { id: existingUser._id, name: existingUser.name },
       });
     }
 

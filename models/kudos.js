@@ -19,9 +19,9 @@ const kudosSchema = new Schema(
       enum: ["helping_hand", "excellence", "above_and_beyond", "client_focus"],
       required: true,
     },
-    like: {
-      type: Boolean,
-      default: false,
+    reason_for_kudos: {
+      type: String,
+      required: true,
     },
   },
   { timestamps: true }

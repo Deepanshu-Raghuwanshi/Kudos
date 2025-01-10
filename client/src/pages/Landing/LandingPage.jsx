@@ -8,7 +8,10 @@ const LandingPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const currentUser = location.state?.currentUser || null;
+  const userId = location.state?.userId || null;
   const [kudos, setKudos] = useState([]);
+
+  console.log(userId, "userId");
 
   useEffect(() => {
     fetchKudos();
@@ -16,25 +19,30 @@ const LandingPage = () => {
 
   const fetchKudos = async () => {
     try {
-      const response = await axios.get(`http://localhost:3001/api/kudos`);
+      const response = await axios.get(
+        `http://localhost:3001/api/kudos?id=${userId}`
+      );
       setKudos(response.data.data || []);
     } catch (error) {
       console.error("Error fetching users:", error);
     }
   };
 
-  const HandleAnalyticNaviagte = () => {
+  const HandleKudoNaviagte = () => {
     navigate("/kudos", { state: { currentUser: currentUser } });
+  };
+
+  const HandleAnalyticNaviagte = () => {
+    navigate("/analytics", { state: { currentUser: currentUser } });
   };
 
   const handleLike = async (id) => {
     try {
-      console.log(id, "iiiiiiii");
-      // Send a POST request to toggle the like status
       const response = await axios.patch(
         `http://localhost:3001/api/kudo/like`,
         {
-          id,
+          kudoId: id,
+          userId: userId,
         }
       );
 
@@ -47,10 +55,7 @@ const LandingPage = () => {
     <div className={style.landing_container}>
       <header className={style.header_section}>
         <h1 className={style.welcome_message}>Welcome {currentUser}!</h1>
-        <button
-          onClick={HandleAnalyticNaviagte}
-          className={style.give_kudo_button}
-        >
+        <button onClick={HandleKudoNaviagte} className={style.give_kudo_button}>
           Give Kudo
         </button>
       </header>
@@ -60,7 +65,12 @@ const LandingPage = () => {
       </main>
 
       <footer className={style.footer_section}>
-        <button className={style.analytics_button}>Analytics</button>
+        <button
+          onClick={HandleAnalyticNaviagte}
+          className={style.analytics_button}
+        >
+          Analytics
+        </button>
       </footer>
     </div>
   );

@@ -18,11 +18,15 @@ const WelcomePage = () => {
       const response = await axios.post("http://localhost:3001/api/users", {
         name,
       });
-
+      console.log(response.data.data.id, "response.data.data.id");
       if (response.data.exists) {
-        navigate("/landing", { state: { currentUser: name } });
+        navigate("/landing", {
+          state: { currentUser: name, userId: response.data.data.id },
+        });
       } else {
-        navigate("/landing", { state: { currentUser: name } });
+        navigate("/landing", {
+          state: { currentUser: name, userId: response.data.data.id },
+        });
       }
     } catch (error) {
       if (error.response) {

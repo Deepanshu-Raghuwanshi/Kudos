@@ -45,8 +45,6 @@ const KudosPage = ({ adminName }) => {
       byUser: currentUser,
     };
 
-    console.log(data, "pppp");
-
     try {
       const response = await axios.post("http://localhost:3001/api/kudos", {
         data,
@@ -56,7 +54,7 @@ const KudosPage = ({ adminName }) => {
       setSelectedUser("");
       setSelectedBadge("");
       setReason("");
-      navigate("/");
+      navigate("/analytics");
     } catch (error) {
       console.error("Error sending kudo:", error);
     }
