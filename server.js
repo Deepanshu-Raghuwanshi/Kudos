@@ -11,12 +11,17 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+const cors = require("cors");
+
 app.use(
   cors({
-    origin: "*",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    origin: "https://kudos-alpha-one.vercel.app", // Only allow requests from your frontend
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Include OPTIONS for preflight requests
+    allowedHeaders: ["Content-Type", "Authorization"], // Allow necessary headers
+    credentials: true, // Allow credentials if needed (like cookies)
   })
 );
+app.options("*", cors()); // Handle preflight requests for all routes
 
 app.use("/api", route);
 
